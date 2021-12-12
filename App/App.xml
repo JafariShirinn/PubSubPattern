@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>App</name>
+    </assembly>
+    <members>
+        <member name="T:App.Controllers.WeatherForecastController">
+            <summary>
+            this controller contains all endpoint related to weather forecasting
+            post: Broadcast the weather forecast
+            </summary>
+        </member>
+        <member name="M:App.Controllers.WeatherForecastController.#ctor(Microsoft.Extensions.Logging.ILogger{App.Controllers.WeatherForecastController},Domain.Mappers.IMapper{WebClient.Models.WeatherForecastRequestModel,Domain.Models.WeatherForecastModel},Domain.Media.IRadioStation,Domain.Media.INewspaper,Domain.Media.ISocialMedia,Domain.Services.IWeatherForecastService)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="logger">used for all logs</param>
+            <param name="mapper">used for mapping the request model to domain model</param>
+            <param name="radioStation">interface of radioStation</param>
+            <param name="newspaper">interface of newspaper</param>
+            <param name="socialMedia">interface of socialMedia</param>
+            <param name="weatherForecastService">interface of domain service </param>
+        </member>
+        <member name="M:App.Controllers.WeatherForecastController.Broadcast(WebClient.Models.WeatherForecastRequestModel)">
+            <summary>
+            this method broadcasts the weather forecast to all subscriber media
+            </summary>
+            <param name="forecastRequestModel">model is contains the forecast Date and the temperature in celsius</param>
+            <returns> a xml string contains all media forecasting news</returns>
+        </member>
+        <member name="T:App.Mappers.WeatherForecastRequestToWeatherForecastMapper">
+            <summary>
+            A mapper for mapping the WeatherForecastRequestModel to WeatherForecastModel
+            </summary>
+        </member>
+        <member name="M:App.Mappers.WeatherForecastRequestToWeatherForecastMapper.Map(WebClient.Models.WeatherForecastRequestModel,Domain.Models.WeatherForecastModel)">
+            <summary>
+            map source to target
+            </summary>
+            <param name="source">WeatherForecastRequestModel</param>
+            <param name="target">WeatherForecastModel</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="T:App.Program">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:App.Program.Main(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:App.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:App.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:App.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Startup Constructor
+            </summary>
+            <param name="configuration">Interface of Configuration</param>
+        </member>
+        <member name="P:App.Startup.Configuration">
+            <summary>
+            Configuration
+            </summary>
+        </member>
+        <member name="M:App.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container. 
+            </summary>
+            <param name="services">services to add to the container</param>
+        </member>
+        <member name="M:App.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app">application builder</param>
+            <param name="env">web host environment</param>
+        </member>
+    </members>
+</doc>
