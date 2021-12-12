@@ -8,9 +8,24 @@ namespace Domain.Services
     public class WeatherForecastService : IWeatherForecastService
     {
         private readonly IPublisher _publisher;
-        public WeatherForecastService(IPublisher publisher)
+        private readonly INewspaper _newspaper;
+        private readonly IRadioStation _radioStation;
+        private readonly ISocialMedia _socialMedia;
+
+        //public WeatherForecastService(IPublisher publisher)
+        //{
+        //    _publisher = publisher;
+        //}
+
+        public WeatherForecastService(IPublisher publisher,
+            INewspaper newspaper,
+            IRadioStation radioStation,
+            ISocialMedia socialMedia)
         {
             _publisher = publisher;
+            _newspaper = newspaper;
+            _radioStation = radioStation;
+            _socialMedia = socialMedia;
         }
 
         public bool Broadcast(WeatherForecastModel forecastModel)
@@ -20,13 +35,13 @@ namespace Domain.Services
 
             try
             {
-                var newspaper = new Newspaper();
-                var radioStation = new RadioStation();
-                var socialMedia = new SocialMedia();
+                //var newspaper = new Newspaper();
+                //var radioStation = new RadioStation();
+                //var socialMedia = new SocialMedia();
 
-                _publisher.OnChange += newspaper.Display;
-                _publisher.OnChange += socialMedia.Display;
-                _publisher.OnChange += radioStation.Display;
+                _publisher.OnChange += _newspaper.Display;
+                _publisher.OnChange += _socialMedia.Display;
+                _publisher.OnChange += _radioStation.Display;
 
                 _publisher.NotifySubscribers(forecastModel);
 

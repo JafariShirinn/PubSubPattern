@@ -57,9 +57,12 @@ namespace App.Controllers
             {
                 var weatherForecastModel = _mapper.Map(forecastRequestModel);
 
-                 _weatherForecastService.Broadcast(weatherForecastModel);
+                var broadcastResult = _weatherForecastService.Broadcast(weatherForecastModel);
 
-                 var result = _weatherForecastService.DisplayForecasts();
+                if (!broadcastResult)
+                    return Problem("broadcasting failed");
+
+                var result = _weatherForecastService.DisplayForecasts();
 
                 return Ok(result);
             }

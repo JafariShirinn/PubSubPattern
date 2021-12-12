@@ -1,5 +1,6 @@
 using App.Mappers;
 using Domain.Mappers;
+using Domain.Media;
 using Domain.Models;
 using Domain.Publisher;
 using Domain.Services;
@@ -40,6 +41,10 @@ namespace App
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IPublisher, Publisher>();
+            services.AddScoped<INewspaper, Newspaper>();
+            services.AddScoped<IRadioStation, RadioStation>();
+            services.AddScoped<ISocialMedia, SocialMedia>();
+
             services.AddScoped<IWeatherForecastService, WeatherForecastService>();
             services.AddScoped<IMapper<WeatherForecastRequestModel, WeatherForecastModel>, WeatherForecastRequestToWeatherForecastMapper>();
 

@@ -8,9 +8,8 @@ namespace Domain.Models
         public string Summary { get; set; }
 
         public WeatherForecastModel()
-        {
-            
-        }
+        {}
+
         public WeatherForecastModel(DateTime date, string summary)
         {
             Date = date;

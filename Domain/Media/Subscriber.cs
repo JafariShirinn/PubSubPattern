@@ -6,4 +6,9 @@ namespace Domain.Media
     {
         public abstract void Display(object sender, WeatherForecastModel forecastModel);
     }
+
+    //public interface ISubscriber
+    //{
+    //    public  void Display(object sender, WeatherForecastModel forecastModel);
+    //}
 }

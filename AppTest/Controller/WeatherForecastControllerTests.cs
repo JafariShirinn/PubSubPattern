@@ -30,9 +30,6 @@ namespace AppTest.Controller
         {
             _controller = new WeatherForecastController(_loggerMock.Object,
                 _mapperMock.Object,
-                //_radioStationMock.Object,
-                //_newspaperMock.Object,
-                //_socialMediaMock.Object,
                 _weatherForecastServiceMock.Object);
         }
 
