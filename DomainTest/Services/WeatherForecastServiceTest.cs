@@ -20,6 +20,7 @@ namespace DomainTest.Services
         public void Setup()
         {
             _publisherMock = new Mock<IPublisher>();
+            _service = new WeatherForecastService(_publisherMock.Object);
         }
 
         [Test]
@@ -43,16 +44,11 @@ namespace DomainTest.Services
 
             _publisherMock.Setup(p => p.NotifySubscribers(weatherForecastModel));
 
-            //var publisher = new Publisher();
+            var result = _service.Broadcast(weatherForecastModel);
 
-            //var newspaper = new Newspaper();
-            //var radioStation = new RadioStation();
-
-            //publisher.NotifySubscribers(weatherForecastModel);
-
-            _service.Broadcast(weatherForecastModel);
-
+            result.Should().BeTrue();
             _publisherMock.Verify(p=>p.NotifySubscribers(weatherForecastModel), Times.Once);
+
         }
     }
 }
